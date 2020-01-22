@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-function ask_yes_or_no() {
-  read -p "$1 (y/N): "
-  case $(echo $REPLY | tr '[A-Z]' '[a-z]') in
-    y|yes) echo "yes" ;;
-    *)     echo "no" ;;
-  esac
-}
-
 node --no-warnings ./
 git --no-pager diff translations
 
@@ -18,12 +10,9 @@ git --no-pager diff translations
 #   exit 0
 # fi
 
-if [[ "yes" == $(ask_yes_or_no "Copy to frontend?") ]]
-then
-  cp translations/* ../frontend/src/lang/locales/
-  echo "Copied."
-  exit 0
-fi
+cp translations/* ../frontend/src/lang/locales/
+echo "Files copied !!!!!"
+exit 0
 
 # now=$(date)
 # git add translations
